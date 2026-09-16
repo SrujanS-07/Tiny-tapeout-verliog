@@ -46,4 +46,16 @@ module tb ();
       .rst_n  (rst_n)     // not reset
   );
 
+  // Optional: Simple initial block to initialize inputs for standalone Verilog simulation
+  initial begin
+    clk   = 0;
+    rst_n = 1'b1;
+    ena   = 1'b1;
+    ui_in = 8'b0;
+    uio_in = 8'b0;
+  end
+
+  // Optional clock generator (if needed by simulation runner, though combinational logic doesn't strictly require it)
+  always #5 clk = ~clk;
+
 endmodule
